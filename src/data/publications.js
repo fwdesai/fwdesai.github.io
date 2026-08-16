@@ -1,46 +1,53 @@
 // ---------------------------------------------------------------------------
 // PUBLICATIONS — papers, abstracts, and posters.
 //
-// Drives /publications. Add an entry and it shows up; newest first.
+// Drives /publications. Each entry shows three things: the category, the
+// title, and the link itself as visible clickable text.
 //
 // FIELDS
-//   title   Required. The exact published title.
-//   type    'Paper' | 'Abstract' | 'Poster' | anything else you want shown.
-//   venue   Conference or journal. Optional.
-//   year    Shown next to the venue. Optional.
-//   href    Link to the PDF, DOI, or proceedings page. Optional — leave it
-//           empty ('') and the title renders as plain text instead of a dead
-//           link, so an entry with no URL yet still looks intentional.
-//   note    Optional extra line, e.g. 'Accepted, to appear'.
+//   type     'Paper' | 'Abstract' | 'Poster' — free text, shown as typed.
+//   title    The exact published title.
+//   href     Full URL. Leave it '' and the entry renders without a link line
+//            instead of showing a dead one.
+//   related  Optional. Other items about the SAME work — e.g. the poster that
+//            goes with a paper. They render grouped underneath, indented and
+//            joined by a rule, so it reads as one piece of work rather than
+//            three separate publications. Same fields as above, minus
+//            `related` (grouping is one level deep).
 //
-// Order the array however you want them displayed. Nothing sorts it for you.
+// Array order is display order; nothing sorts it for you.
+//
+// GROUPING EXAMPLE
+//   {
+//     type: 'Paper',
+//     title: 'A Custom Quadrature Digitizer for MRI Radar',
+//     href: 'https://doi.org/10.1234/example',
+//     related: [
+//       { type: 'Poster', title: 'Same work, poster version', href: 'https://…' },
+//       { type: 'Abstract', title: 'Extended abstract', href: 'https://…' },
+//     ],
+//   }
 // ---------------------------------------------------------------------------
 
 export const publications = [
-  // NOTE: seeded from your resume. Replace the working titles below with the
+  // NOTE: seeded from your resume. Replace these working titles with the
   // exact published titles and drop in the proceedings/DOI links.
   {
-    title: 'Custom High-Resolution Wireless Quadrature Digitizer PCB for MRI Radar Prototyping',
     type: 'Paper',
-    venue: '',
-    year: '',
+    title: 'Custom High-Resolution Wireless Quadrature Digitizer PCB for MRI Radar Prototyping',
     href: '',
-    note: '',
+    related: [],
   },
   {
+    type: 'Abstract',
     title: 'Event Positioning',
-    type: 'Abstract',
-    venue: 'IEEE Nuclear Science Symposium & Medical Imaging Conference (NSS/MIC)',
-    year: '',
     href: '',
-    note: 'Published in conference proceedings.',
+    related: [],
   },
   {
-    title: 'Inter-Crystal Scattering',
     type: 'Abstract',
-    venue: 'IEEE Nuclear Science Symposium & Medical Imaging Conference (NSS/MIC)',
-    year: '',
+    title: 'Inter-Crystal Scattering',
     href: '',
-    note: 'Published in conference proceedings.',
+    related: [],
   },
 ];

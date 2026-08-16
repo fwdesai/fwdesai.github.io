@@ -142,9 +142,8 @@ const links = NAV.map((item) => ({
 
     <footer class="border-t border-rule">
       <div
-        class={`mx-auto flex w-full flex-col gap-2 px-6 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between ${wide ? 'max-w-6xl' : 'max-w-3xl'}`}
+        class={`mx-auto flex w-full px-6 py-8 text-sm text-muted ${wide ? 'max-w-6xl' : 'max-w-3xl'}`}
       >
-        <p>© {new Date().getFullYear()} {SITE.name}</p>
         <a
           href={`mailto:${SITE.email}`}
           class="text-accent underline underline-offset-2 hover:decoration-2"

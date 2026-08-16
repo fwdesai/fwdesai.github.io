@@ -16,7 +16,6 @@ export const SITE = {
   // the preview image).
   resumePdf: '/Desai_Resume_8_16.pdf',
   resumeImage: '/resume-preview.webp',
-  resumeUpdated: 'August 2026',
 };
 
 export const NAV = [

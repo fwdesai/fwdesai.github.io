@@ -3,13 +3,9 @@ import Base from '../layouts/Base.astro';
 import { publications } from '../data/publications.js';
 ---
 
-<Base
-  title="Publications"
-  description="Papers, abstracts, and posters by Finley Desai."
->
+<Base title="Publications" description="Papers, abstracts, and posters by Finley Desai.">
   <header class="mb-10">
     <h1 class="text-4xl leading-tight">Publications</h1>
-    <p class="mt-4 text-lg leading-relaxed">Papers, abstracts, and posters.</p>
   </header>
 
   {
@@ -19,24 +15,40 @@ import { publications } from '../data/publications.js';
       <ul class="divide-y divide-rule border-t border-b border-rule">
         {publications.map((pub) => (
           <li class="py-5">
-            <p class="mb-1.5 font-mono text-xs tracking-wide text-muted uppercase">
-              {[pub.type, pub.venue, pub.year].filter(Boolean).join(' · ')}
-            </p>
+            <p class="mb-1.5 font-mono text-xs tracking-wide text-muted uppercase">{pub.type}</p>
+            <h2 class="text-lg leading-snug">{pub.title}</h2>
+            {pub.href && (
+              <a
+                href={pub.href}
+                class="mt-1.5 inline-block text-sm break-all text-accent underline underline-offset-4 hover:decoration-2"
+              >
+                {pub.href}
+              </a>
+            )}
 
-            <h2 class="text-lg leading-snug">
-              {pub.href ? (
-                <a
-                  href={pub.href}
-                  class="text-accent underline underline-offset-4 hover:decoration-2"
-                >
-                  {pub.title} ↗
-                </a>
-              ) : (
-                pub.title
-              )}
-            </h2>
-
-            {pub.note && <p class="mt-1.5 text-sm text-muted">{pub.note}</p>}
+            {/* Related items — the poster or abstract that goes with this
+                paper. Indented under a rule so the group reads as one piece
+                of work. */}
+            {pub.related?.length > 0 && (
+              <ul class="mt-4 space-y-4 border-l-2 border-rule pl-4 sm:pl-5">
+                {pub.related.map((item) => (
+                  <li>
+                    <p class="mb-1 font-mono text-xs tracking-wide text-muted uppercase">
+                      {item.type}
+                    </p>
+                    <h3 class="text-base leading-snug">{item.title}</h3>
+                    {item.href && (
+                      <a
+                        href={item.href}
+                        class="mt-1 inline-block text-sm break-all text-accent underline underline-offset-4 hover:decoration-2"
+                      >
+                        {item.href}
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
         ))}
       </ul>

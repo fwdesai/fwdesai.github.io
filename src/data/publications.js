@@ -41,13 +41,13 @@ export const publications = [
   },
   {
     type: 'Abstract',
-    title: 'Event Positioning',
+    title: 'Evaluation of Event Positioning Strategies to Optimize Contrast Recovery in a TOFPET Brain Insert for Simultaneous PET/MRI',
     href: 'https://ieeexplore.ieee.org/document/11286259',
     related: [],
   },
   {
     type: 'Abstract',
-    title: 'Inter-Crystal Scattering',
+    title: 'A Novel Inter-Crystal Scattering Positioning Method Based on Energy Ordering and First-Interaction Crystal Correlation',
     href: 'https://ieeexplore.ieee.org/document/11286500',
     related: [],
   },

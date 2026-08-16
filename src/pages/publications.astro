@@ -18,7 +18,12 @@ import { publications } from '../data/publications.js';
             <p class="mb-1.5 font-mono text-xs tracking-wide text-muted uppercase">{pub.type}</p>
             <h2 class="text-lg leading-snug">
               {pub.href ? (
-                <a href={pub.href} class="transition-colors hover:text-accent">
+                <a
+                  href={pub.href}
+                  target="_blank"
+                  rel="noopener"
+                  class="transition-colors hover:text-accent"
+                >
                   {pub.title}
                 </a>
               ) : (
@@ -28,6 +33,8 @@ import { publications } from '../data/publications.js';
             {pub.href && (
               <a
                 href={pub.href}
+                target="_blank"
+                rel="noopener"
                 class="mt-1.5 inline-block text-sm break-all text-accent underline underline-offset-4 hover:decoration-2"
               >
                 {pub.href}
@@ -46,7 +53,12 @@ import { publications } from '../data/publications.js';
                     </p>
                     <h3 class="text-base leading-snug">
                       {item.href ? (
-                        <a href={item.href} class="transition-colors hover:text-accent">
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener"
+                          class="transition-colors hover:text-accent"
+                        >
                           {item.title}
                         </a>
                       ) : (
@@ -56,6 +68,8 @@ import { publications } from '../data/publications.js';
                     {item.href && (
                       <a
                         href={item.href}
+                        target="_blank"
+                        rel="noopener"
                         class="mt-1 inline-block text-sm break-all text-accent underline underline-offset-4 hover:decoration-2"
                       >
                         {item.href}

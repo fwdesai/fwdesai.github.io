@@ -37,17 +37,7 @@ const href = `/projects/${project.slug}`;
       </a>
     </h3>
 
-    <p class="mb-4 flex-1 text-sm leading-relaxed">{project.summary}</p>
-
-    <ul class="flex flex-wrap gap-1.5">
-      {
-        project.tags.slice(0, 4).map((tag) => (
-          <li class="rounded-full bg-accent-soft px-2.5 py-1 font-mono text-[11px] text-accent">
-            {tag}
-          </li>
-        ))
-      }
-    </ul>
+    <p class="flex-1 text-sm leading-relaxed">{project.summary}</p>
   </div>
 </article>
 

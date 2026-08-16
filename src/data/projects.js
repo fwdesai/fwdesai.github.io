@@ -21,7 +21,6 @@
 //   org       Lab, company, or "Personal project".
 //   period    Human-readable date range.
 //   summary   1–2 sentences. Shown on the grid card and as the page intro.
-//   tags      Short keywords shown as pills.
 //   links     [{ label, href }] — GitHub, papers, etc. Omit if none.
 //   cover     Path to the card image, or null.
 //   images    [{ src, alt, caption }] gallery entries.
@@ -39,7 +38,6 @@ export const projects = [
     summary:
       'A roughly 16-layer high-speed board in Altium integrating ~50 ICs, including ' +
       'wire-bonded devices, for on-robot inference.',
-    tags: ['Altium', 'High-speed digital', 'DDR3', 'Signal integrity', 'Chip-on-board'],
     links: [
       // { label: 'GitHub', href: 'https://github.com/fwdesai/...' },
     ],
@@ -78,7 +76,6 @@ export const projects = [
     summary:
       'A high-speed test board in KiCad for a custom hardware accelerator, with JTAG and ' +
       'peripheral interfaces and clock routing optimized for operation up to 800 MHz.',
-    tags: ['KiCad', 'High-speed digital', 'JTAG', 'Clock routing'],
     links: [{ label: 'GitHub', href: 'https://github.com/fwdesai/KIRIN-Test-Board' }],
     cover: null,
     images: [],
@@ -104,7 +101,6 @@ export const projects = [
       'A custom dual-channel quadrature digitizer with high-resolution ADCs and an analog ' +
       'front-end for continuous-wave radar vital-sign monitoring inside an MRI bore — about ' +
       '80 dB better dynamic range than the SDR-based approach it replaced.',
-    tags: ['PCB design', 'Analog front-end', 'ADC', 'MicroPython', 'RP2040 PIO', 'DSP'],
     links: [
       {
         label: 'Conference paper',

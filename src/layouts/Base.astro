@@ -7,6 +7,13 @@ const { title, description = SITE.description, wide = false } = Astro.props;
 const pageTitle = title ? `${title} — ${SITE.name}` : `${SITE.name} — ${SITE.role}`;
 const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const canonical = new URL(Astro.url.pathname, Astro.site);
+
+// Resolved once here, then rendered by both the wide and narrow navs below.
+const links = NAV.map((item) => ({
+  ...item,
+  isActive:
+    item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href),
+}));
 ---
 
 <!doctype html>
@@ -41,35 +48,89 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 
     <header class="border-b border-rule">
       <div
-        class={`mx-auto flex w-full items-center justify-end gap-6 px-6 py-5 ${wide ? 'max-w-6xl' : 'max-w-3xl'}`}
+        class={`mx-auto flex w-full items-center justify-end gap-6 px-6 py-4 sm:py-5 ${wide ? 'max-w-6xl' : 'max-w-3xl'}`}
       >
-        <nav aria-label="Main">
-          <ul class="flex flex-wrap items-center justify-end gap-x-4 gap-y-1 text-sm sm:gap-x-7">
+        <!-- Wide screens: links laid out horizontally. -->
+        <nav aria-label="Main" class="hidden sm:block">
+          <ul class="flex items-center gap-x-7 text-sm">
             {
-              NAV.map((item) => {
-                const isActive =
-                  item.href === '/'
-                    ? currentPath === '/'
-                    : currentPath.startsWith(item.href);
-                return (
+              links.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    aria-current={item.isActive ? 'page' : undefined}
+                    class={`transition-colors hover:text-accent ${
+                      item.isActive
+                        ? 'font-medium text-ink underline decoration-accent decoration-2 underline-offset-6'
+                        : 'text-muted'
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+
+        <!-- Narrow screens: collapse to a menu button.
+             Built on <details> rather than JavaScript — it's keyboard
+             operable and announces its open/closed state to screen readers
+             for free, and the site ships no client JS. Each link is a full
+             page navigation, so the menu resets closed on its own. -->
+        <details class="nav-menu relative sm:hidden">
+          <summary
+            class="flex size-11 cursor-pointer items-center justify-center rounded-md text-ink transition-colors hover:text-accent"
+            aria-label="Menu"
+          >
+            <!-- Hamburger, swapped for an X while open -->
+            <svg
+              class="icon-open size-6"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+            <svg
+              class="icon-close size-6"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </summary>
+
+          <nav
+            aria-label="Main"
+            class="absolute top-full right-0 z-40 mt-2 w-56 rounded-lg border border-rule bg-paper py-1.5 shadow-lg"
+          >
+            <ul class="text-sm">
+              {
+                links.map((item) => (
                   <li>
                     <a
                       href={item.href}
-                      aria-current={isActive ? 'page' : undefined}
-                      class={`transition-colors hover:text-accent ${
-                        isActive
-                          ? 'font-medium text-ink underline decoration-accent decoration-2 underline-offset-6'
-                          : 'text-muted'
+                      aria-current={item.isActive ? 'page' : undefined}
+                      class={`block px-4 py-2.5 transition-colors hover:bg-tint hover:text-accent ${
+                        item.isActive ? 'font-medium text-ink' : 'text-body'
                       }`}
                     >
                       {item.label}
                     </a>
                   </li>
-                );
-              })
-            }
-          </ul>
-        </nav>
+                ))
+              }
+            </ul>
+          </nav>
+        </details>
       </div>
     </header>
 
@@ -92,5 +153,24 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
         </a>
       </div>
     </footer>
+
+    <style>
+      /* Strip the native disclosure triangle so the summary is just our icon. */
+      .nav-menu > summary {
+        list-style: none;
+      }
+      .nav-menu > summary::-webkit-details-marker {
+        display: none;
+      }
+
+      /* Show the hamburger when closed, the X when open. */
+      .nav-menu > summary > .icon-close,
+      .nav-menu[open] > summary > .icon-open {
+        display: none;
+      }
+      .nav-menu[open] > summary > .icon-close {
+        display: block;
+      }
+    </style>
   </body>
 </html>

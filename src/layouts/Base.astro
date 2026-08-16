@@ -41,15 +41,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 
     <header class="border-b border-rule">
       <div
-        class={`mx-auto flex w-full items-center justify-between gap-6 px-6 py-5 ${wide ? 'max-w-6xl' : 'max-w-3xl'}`}
+        class={`mx-auto flex w-full items-center justify-end gap-6 px-6 py-5 ${wide ? 'max-w-6xl' : 'max-w-3xl'}`}
       >
-        <a
-          href="/"
-          class="font-serif text-lg font-semibold text-ink transition-colors hover:text-accent"
-        >
-          {SITE.name}
-        </a>
-
         <nav aria-label="Main">
           <ul class="flex items-center gap-5 text-sm sm:gap-7">
             {

@@ -141,69 +141,6 @@ export const projects = [
       },
     ],
   },
-
-  {
-    slug: 'pet-monte-carlo',
-    title: 'PET Imaging Monte Carlo Simulations',
-    subtitle: 'Inter-crystal scatter correction and event positioning',
-    org: 'Stanford Molecular Imaging Instrumentation Laboratory',
-    period: 'Mar 2024 – Jun 2025',
-    summary:
-      'Custom Monte Carlo physics simulations analyzing large datasets to design and validate ' +
-      'inter-crystal scatter correction algorithms and event-positioning strategies for PET imaging.',
-    tags: ['Monte Carlo', 'Medical imaging', 'Python', 'Data analysis'],
-    links: [
-      // { label: 'Event Positioning (IEEE NSS/MIC)', href: '...' },
-      // { label: 'Inter-Crystal Scattering (IEEE NSS/MIC)', href: '...' },
-    ],
-    cover: null,
-    images: [],
-    sections: [
-      {
-        heading: 'Overview',
-        body: [
-          'Developed and executed custom Monte Carlo physics simulations, analyzing large ' +
-            'datasets to design and validate inter-crystal scatter correction algorithms and ' +
-            'event-positioning strategies for PET imaging.',
-        ],
-      },
-      {
-        heading: 'Publications',
-        body: [
-          'Two conference papers accepted for presentation at the IEEE Nuclear Science ' +
-            'Symposium & Medical Imaging Conference (NSS/MIC), with abstracts published in the ' +
-            'conference proceedings: Event Positioning, and Inter-Crystal Scattering.',
-        ],
-      },
-    ],
-  },
-
-  {
-    slug: 'riscv-bare-metal',
-    title: 'Bare-metal Systems Programming',
-    subtitle: 'C libraries and drivers on a Mango Pi RISC-V board',
-    org: 'Personal project',
-    period: '2025',
-    summary:
-      'Bare-metal C libraries and drivers written from scratch for a Mango Pi RISC-V board — ' +
-      'I/O, memory management, interrupts, keyboard input, graphics, printf, and a terminal interface.',
-    tags: ['C', 'RISC-V', 'Bare metal', 'Drivers'],
-    links: [
-      // { label: 'GitHub', href: 'https://github.com/fwdesai/...' },
-    ],
-    cover: null,
-    images: [],
-    sections: [
-      {
-        heading: 'Overview',
-        body: [
-          'Implemented bare-metal C libraries and drivers for I/O, memory management, ' +
-            'interrupts, keyboard input, graphics, printf, and a terminal interface on a ' +
-            'Mango Pi RISC-V board.',
-        ],
-      },
-    ],
-  },
 ];
 
 // Look up a single project by its slug.

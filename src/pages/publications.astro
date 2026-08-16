@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+import { publications } from '../data/publications.js';
+---
+
+<Base
+  title="Publications"
+  description="Papers, abstracts, and posters by Finley Desai."
+>
+  <header class="mb-10">
+    <h1 class="text-4xl leading-tight">Publications</h1>
+    <p class="mt-4 text-lg leading-relaxed">Papers, abstracts, and posters.</p>
+  </header>
+
+  {
+    publications.length === 0 ? (
+      <p class="text-muted">Nothing here yet.</p>
+    ) : (
+      <ul class="divide-y divide-rule border-t border-b border-rule">
+        {publications.map((pub) => (
+          <li class="py-5">
+            <p class="mb-1.5 font-mono text-xs tracking-wide text-muted uppercase">
+              {[pub.type, pub.venue, pub.year].filter(Boolean).join(' · ')}
+            </p>
+
+            <h2 class="text-lg leading-snug">
+              {pub.href ? (
+                <a
+                  href={pub.href}
+                  class="text-accent underline underline-offset-4 hover:decoration-2"
+                >
+                  {pub.title} ↗
+                </a>
+              ) : (
+                pub.title
+              )}
+            </h2>
+
+            {pub.note && <p class="mt-1.5 text-sm text-muted">{pub.note}</p>}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</Base>

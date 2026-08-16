@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { projects } from '../../data/projects.js';
+---
+
+<Base
+  wide
+  title="Projects"
+  description="Hardware and embedded systems projects — high-speed PCB design, analog front-ends, and firmware."
+>
+  <header class="mx-auto mb-12 max-w-3xl">
+    <h1 class="text-4xl leading-tight">Projects</h1>
+    <p class="mt-4 text-lg leading-relaxed">
+      Hardware, firmware, and the signal processing in between. Most of these are boards I
+      designed, built, and brought up myself.
+    </p>
+  </header>
+
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {projects.map((project) => <ProjectCard project={project} />)}
+  </div>
+</Base>

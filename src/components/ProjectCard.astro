@@ -1,0 +1,58 @@
+---
+import ImagePlaceholder from './ImagePlaceholder.astro';
+
+const { project } = Astro.props;
+const href = `/projects/${project.slug}`;
+---
+
+<article
+  class="group flex flex-col overflow-hidden rounded-lg border border-rule bg-paper transition-colors hover:border-accent/40"
+>
+  <a href={href} tabindex="-1" aria-hidden="true" class="block">
+    {
+      project.cover ? (
+        <img
+          src={project.cover}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          class="aspect-[4/3] w-full object-cover"
+        />
+      ) : (
+        <ImagePlaceholder class="aspect-[4/3] w-full border-x-0 border-t-0" />
+      )
+    }
+  </a>
+
+  <div class="flex flex-1 flex-col p-5">
+    <p class="mb-1.5 font-mono text-xs tracking-wide text-muted uppercase">
+      {project.org} · {project.period}
+    </p>
+
+    <h3 class="mb-2 text-xl leading-snug">
+      <a href={href} class="transition-colors group-hover:text-accent">
+        {project.title}
+        <!-- Stretch the link across the whole card so the entire card is clickable -->
+        <span class="absolute inset-0" aria-hidden="true"></span>
+      </a>
+    </h3>
+
+    <p class="mb-4 flex-1 text-sm leading-relaxed">{project.summary}</p>
+
+    <ul class="flex flex-wrap gap-1.5">
+      {
+        project.tags.slice(0, 4).map((tag) => (
+          <li class="rounded-full bg-accent-soft px-2.5 py-1 font-mono text-[11px] text-accent">
+            {tag}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</article>
+
+<style>
+  article {
+    position: relative;
+  }
+</style>

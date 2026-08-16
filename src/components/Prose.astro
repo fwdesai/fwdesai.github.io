@@ -1,0 +1,41 @@
+---
+// Renders a `sections` array from src/data/projects.js.
+// Each body string is a paragraph; a string starting with '- ' is a bullet.
+const { sections = [] } = Astro.props;
+
+// Group consecutive '- ' strings into single <ul> blocks.
+function toBlocks(body) {
+  const blocks = [];
+  for (const line of body) {
+    if (line.startsWith('- ')) {
+      const last = blocks[blocks.length - 1];
+      if (last?.type === 'list') last.items.push(line.slice(2));
+      else blocks.push({ type: 'list', items: [line.slice(2)] });
+    } else {
+      blocks.push({ type: 'p', text: line });
+    }
+  }
+  return blocks;
+}
+---
+
+<div class="prose">
+  {
+    sections.map((section) => (
+      <section class="mb-8 last:mb-0">
+        <h2 class="mb-3 text-xl">{section.heading}</h2>
+        {toBlocks(section.body).map((block) =>
+          block.type === 'list' ? (
+            <ul>
+              {block.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>{block.text}</p>
+          )
+        )}
+      </section>
+    ))
+  }
+</div>

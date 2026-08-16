@@ -1,0 +1,31 @@
+---
+import ImagePlaceholder from './ImagePlaceholder.astro';
+
+const { images = [], slug } = Astro.props;
+---
+
+{
+  images.length === 0 ? (
+    <ImagePlaceholder
+      class="aspect-[16/9] w-full rounded-lg"
+      label={`Add photos to public/images/projects/${slug}/`}
+    />
+  ) : (
+    <div class="grid gap-6 sm:grid-cols-2">
+      {images.map((image, i) => (
+        <figure class={images.length === 1 || i === 0 ? 'sm:col-span-2' : ''}>
+          <img
+            src={image.src}
+            alt={image.alt}
+            loading={i === 0 ? 'eager' : 'lazy'}
+            decoding="async"
+            class="w-full rounded-lg border border-rule"
+          />
+          {image.caption && (
+            <figcaption class="mt-2 text-sm text-muted">{image.caption}</figcaption>
+          )}
+        </figure>
+      ))}
+    </div>
+  )
+}

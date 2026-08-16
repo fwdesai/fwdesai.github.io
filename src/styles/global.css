@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Design tokens. Change a value here and it updates everywhere on the site.
+   Tailwind 4 turns each of these into a utility class automatically, e.g.
+   `--color-ink` becomes `text-ink`, `bg-ink`, `border-ink`.
+--------------------------------------------------------------------------- */
+@theme {
+  /* Text */
+  --color-ink: #16191d;        /* headings, primary text */
+  --color-body: #3d434b;       /* paragraph text */
+  --color-muted: #6b7280;      /* dates, captions, metadata */
+
+  /* Surfaces */
+  --color-paper: #ffffff;      /* page background */
+  --color-tint: #f7f7f5;       /* subtle section / card background */
+  --color-rule: #e3e3df;       /* hairline borders and dividers */
+
+  /* Accent — one restrained ink blue, used for links and emphasis */
+  --color-accent: #1f4e79;
+  --color-accent-soft: #eaf0f6;
+
+  /* Typography */
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+    "Times New Roman", serif;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    monospace;
+}
+
+/* --------------------------------------------------------------------------
+   Base element styles
+--------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-body);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  color: var(--color-ink);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Keyboard focus ring, consistent across the site */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Respect users who ask for less motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   `prose` — long-form body copy inside project write-ups.
+   Applied via class="prose" so the styling lives in one place.
+--------------------------------------------------------------------------- */
+.prose p {
+  margin-bottom: 1.1rem;
+  line-height: 1.75;
+}
+.prose p:last-child { margin-bottom: 0; }
+
+.prose a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+.prose a:hover { text-decoration-thickness: 2px; }
+
+.prose ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin-bottom: 1.1rem;
+}
+.prose li { margin-bottom: 0.45rem; line-height: 1.7; }
+
+.prose strong { color: var(--color-ink); font-weight: 600; }

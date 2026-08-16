@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { SITE } from '../data/site.js';
+import { projects } from '../data/projects.js';
+
+// The three most recent projects get featured on the home page.
+const featured = projects.slice(0, 3);
+---
+
+<Base wide>
+  <!-- ===================================================================
+       INTRO — edit this copy freely. It's the first thing anyone reads.
+       =================================================================== -->
+  <section class="mx-auto max-w-3xl">
+    <h1 class="text-4xl leading-tight sm:text-5xl">{SITE.name}</h1>
+
+    <p class="mt-4 text-lg leading-relaxed text-body">
+      I'm an electrical engineering student at Stanford, currently finishing a B.S. in
+      Electrical Engineering with a minor in Computer Science and starting a coterminal M.S.
+      this fall.
+    </p>
+
+    <p class="mt-4 text-lg leading-relaxed text-body">
+      Most of my work is hardware: high-speed and mixed-signal PCB design for research
+      instrumentation, along with the firmware and signal processing that make those boards
+      useful. Recent projects include a 16-layer chip-on-board module for robot inference, a
+      quadrature digitizer for contactless vital-sign monitoring inside an MRI bore, and
+      bare-metal drivers for a RISC-V board.
+    </p>
+
+    <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+      <a
+        href="/projects"
+        class="rounded-md bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-opacity hover:opacity-85"
+      >
+        View projects
+      </a>
+      <a
+        href="/resume"
+        class="text-sm text-accent underline underline-offset-4 hover:decoration-2"
+      >
+        Resume
+      </a>
+      <a
+        href={`mailto:${SITE.email}`}
+        class="text-sm text-accent underline underline-offset-4 hover:decoration-2"
+      >
+        {SITE.email}
+      </a>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       FEATURED PROJECTS — pulled automatically from src/data/projects.js
+       =================================================================== -->
+  <section class="mt-16 border-t border-rule pt-12 sm:mt-20">
+    <div class="mb-8 flex items-baseline justify-between gap-4">
+      <h2 class="text-2xl">Selected projects</h2>
+      <a
+        href="/projects"
+        class="shrink-0 text-sm text-accent underline underline-offset-4 hover:decoration-2"
+      >
+        All projects →
+      </a>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {featured.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+</Base>

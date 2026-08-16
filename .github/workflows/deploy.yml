@@ -1,0 +1,45 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Build and publish on every push to main.
+  push:
+    branches: [main]
+  # Also allow a manual run from the Actions tab.
+  workflow_dispatch:
+
+# Permissions the deploy needs. `id-token` is required by deploy-pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# If you push twice quickly, let the in-progress deploy finish rather than
+# cancelling it and leaving the site half-published.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Build site
+        # Handles setup-node, npm ci, astro build, and uploading dist/
+        # as the Pages artifact.
+        uses: withastro/action@v6
+        with:
+          node-version: 24
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

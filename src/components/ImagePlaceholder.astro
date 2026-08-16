@@ -1,0 +1,12 @@
+---
+// Shown wherever a photo hasn't been added yet, so a missing image is an
+// obvious empty slot rather than a broken layout.
+const { label = 'Photo coming soon', class: className = '' } = Astro.props;
+---
+
+<div
+  class={`flex items-center justify-center border border-dashed border-rule bg-tint ${className}`}
+  aria-hidden="true"
+>
+  <span class="font-mono text-xs tracking-wide text-muted uppercase">{label}</span>
+</div>

@@ -79,9 +79,7 @@ export const projects = [
       'A high-speed test board in KiCad for a custom hardware accelerator, with JTAG and ' +
       'peripheral interfaces and clock routing optimized for operation up to 800 MHz.',
     tags: ['KiCad', 'High-speed digital', 'JTAG', 'Clock routing'],
-    links: [
-      // { label: 'GitHub', href: 'https://github.com/fwdesai/...' },
-    ],
+    links: [{ label: 'GitHub', href: 'https://github.com/fwdesai/KIRIN-Test-Board' }],
     cover: null,
     images: [],
     sections: [
@@ -108,8 +106,11 @@ export const projects = [
       '80 dB better dynamic range than the SDR-based approach it replaced.',
     tags: ['PCB design', 'Analog front-end', 'ADC', 'MicroPython', 'RP2040 PIO', 'DSP'],
     links: [
-      // { label: 'Conference paper', href: '...' },
-      // { label: 'GitHub', href: 'https://github.com/fwdesai/...' },
+      {
+        label: 'Conference paper',
+        href: 'https://drive.google.com/file/d/1aab2UVg8FGkZnafTaW_y5S8W_sdfdBil/view',
+      },
+      { label: 'GitHub', href: 'https://github.com/fwdesai/iq_radar_digitizer' },
     ],
     cover: null,
     images: [],

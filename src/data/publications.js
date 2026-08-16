@@ -29,25 +29,26 @@
 //   }
 // ---------------------------------------------------------------------------
 
+// NOTE: URLs were pulled out of the link annotations embedded in your resume
+// PDF. The titles are still the working titles from the resume — swap in the
+// exact published titles when you get a chance.
 export const publications = [
-  // NOTE: seeded from your resume. Replace these working titles with the
-  // exact published titles and drop in the proceedings/DOI links.
   {
     type: 'Paper',
     title: 'Custom High-Resolution Wireless Quadrature Digitizer PCB for MRI Radar Prototyping',
-    href: '',
+    href: 'https://drive.google.com/file/d/1aab2UVg8FGkZnafTaW_y5S8W_sdfdBil/view',
     related: [],
   },
   {
     type: 'Abstract',
     title: 'Event Positioning',
-    href: '',
+    href: 'https://ieeexplore.ieee.org/document/11286259',
     related: [],
   },
   {
     type: 'Abstract',
     title: 'Inter-Crystal Scattering',
-    href: '',
+    href: 'https://ieeexplore.ieee.org/document/11286500',
     related: [],
   },
 ];

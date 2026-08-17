@@ -41,12 +41,8 @@ export const projects = [
     links: [
       // { label: 'GitHub', href: 'https://github.com/fwdesai/...' },
     ],
-    cover: null, // e.g. '/images/projects/robotics-chip-on-board/board-top.jpg'
-    images: [
-      // { src: '/images/projects/robotics-chip-on-board/board-top.jpg',
-      //   alt: 'Top side of the assembled module',
-      //   caption: 'Assembled board, top side.' },
-    ],
+    cover: null,
+    images: [],
     sections: [
       {
         heading: 'Overview',
@@ -77,8 +73,15 @@ export const projects = [
       'A high-speed test board in KiCad for a custom hardware accelerator, with JTAG and ' +
       'peripheral interfaces and clock routing optimized for operation up to 800 MHz.',
     links: [{ label: 'GitHub', href: 'https://github.com/fwdesai/KIRIN-Test-Board' }],
-    cover: null,
-    images: [],
+
+    cover: '/images/projects/accelerator-test-pcb/board.png',
+
+    images: [
+      {
+        src: '/images/projects/accelerator-test-pcb/board.png',
+        alt: 'KIRIN test board layout, top side',
+      },
+    ],
     sections: [
       {
         heading: 'Overview',
@@ -108,8 +111,19 @@ export const projects = [
       },
       { label: 'GitHub', href: 'https://github.com/fwdesai/iq_radar_digitizer' },
     ],
-    cover: null,
-    images: [],
+    cover: '/images/projects/mri-quadrature-digitizer/board_v2.png',
+
+    images: [
+      {
+        src: '/images/projects/mri-quadrature-digitizer/assembled.png',
+        alt: 'Assembled quadrature digitizer board',
+      },
+      {
+        src: '/images/projects/mri-quadrature-digitizer/block_diagram.png',
+        alt: 'Block diagram of the digitizer signal chain',
+      },
+    ],
+
     sections: [
       {
         heading: 'Overview',

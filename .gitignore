@@ -25,3 +25,7 @@ pnpm-debug.log*
 
 # local Claude Code settings
 .claude/settings.local.json
+
+# editor swap files
+*.swp
+*.swo

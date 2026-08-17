@@ -83,6 +83,10 @@ export const projects = [
         src: '/images/projects/accelerator-test-pcb/board.webp',
         alt: 'KIRIN test board layout, top side',
       },
+      {
+        src: '/images/projects/accelerator-test-pcb/back.webp',
+        alt: 'KIRIN test board layout, back side, showing the BGA decoupling capacitors and via field',
+      },
     ],
     sections: [
       {
@@ -163,13 +167,14 @@ export const projects = [
   // ---------------------------------------------------------------------
   {
     slug: 'esp32-pcb',
-    title: 'ESP32 PCB',
+    title: 'ESP32 PCB with Integrated Trace Antenna',
     subtitle: '',
     org: '',
     period: '',
-    summary: '',
+    summary: "Inspired by Phil's Lab YouTube channel. ESP32-based PCB with a meandered printed inverted-F antenna.",
     links: [
-      // { label: 'GitHub', href: 'https://github.com/fwdesai/...' },
+       { label: 'GitHub', href: 'https://github.com/fwdesai/ESP32-PCB-w-Trace-Antenna' },
+            
     ],
     cover: '/images/projects/esp32-pcb/board_assembled.webp',
     images: [
@@ -184,7 +189,14 @@ export const projects = [
         caption: '',
       },
     ],
-    sections: [],
+    sections: [
+      {
+        heading: 'Overview',
+        body: [
+            "Inspired by Phil's Lab YouTube Channel. ESP32-based PCB with a meandered printed inverted-F antenna for communication at 2.4 GHz. Has an IMU connected via a SPI interface." 
+        ],
+      }
+    ],
   },
 ];
 

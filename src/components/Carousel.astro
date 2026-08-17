@@ -205,6 +205,11 @@ const multiple = slides.length > 1;
     function goTo(i) {
       // Wrap around at both ends.
       const target = (i + slides.length) % slides.length;
+      // Update state up front rather than waiting on the scroll event — that
+      // event is throttled in background tabs, and a dropped one would leave
+      // the arrows stuck repeating the same slide. The scroll handler below
+      // still corrects the index after a manual swipe.
+      render(target);
       track.scrollTo({ left: slides[target].offsetLeft - track.offsetLeft });
     }
 

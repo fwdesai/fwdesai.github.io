@@ -3,6 +3,10 @@ import ImagePlaceholder from './ImagePlaceholder.astro';
 
 const { project } = Astro.props;
 const href = `/projects/${project.slug}`;
+
+// A personal project may have no org and no dates — drop the separator rather
+// than rendering a stray " · ".
+const meta = [project.org, project.period].filter(Boolean).join(' · ');
 ---
 
 <article
@@ -25,9 +29,11 @@ const href = `/projects/${project.slug}`;
   </a>
 
   <div class="flex flex-1 flex-col p-5">
-    <p class="mb-1.5 font-mono text-xs tracking-wide text-muted uppercase">
-      {project.org} · {project.period}
-    </p>
+    {
+      meta && (
+        <p class="mb-1.5 font-mono text-xs tracking-wide text-muted uppercase">{meta}</p>
+      )
+    }
 
     <h3 class="mb-2 text-xl leading-snug">
       <a href={href} class="transition-colors group-hover:text-accent">

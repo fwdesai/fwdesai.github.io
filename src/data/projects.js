@@ -32,16 +32,18 @@ export const projects = [
   {
     slug: 'robotics-chip-on-board',
     title: 'Robotics Chip-on-Board Module',
-    subtitle: '16-layer high-speed PCB for robot inference',
+    subtitle: 'High-speed HDI board for robot inference',
     org: 'Stanford Tambe Lab',
-    period: 'Jun 2026 – Present',
+    period: 'In Progress',
     summary:
       'A roughly 16-layer high-speed board in Altium integrating ~50 ICs, including ' +
       'wire-bonded devices, for on-robot inference.',
     links: [
       // { label: 'GitHub', href: 'https://github.com/fwdesai/...' },
     ],
-    cover: null,
+    // Watermarked copy — the clean original is board_v0.webp in the same
+    // folder, ready to swap in when the board is no longer a draft.
+    cover: '/images/projects/robotics-chip-on-board/board_v0-draft.webp',
     images: [],
     sections: [
       {
@@ -66,7 +68,7 @@ export const projects = [
   {
     slug: 'accelerator-test-pcb',
     title: 'Hardware Accelerator Test PCB',
-    subtitle: '800 MHz test platform for a custom accelerator',
+    subtitle: 'Test platform for a custom accelerator',
     org: 'Stanford Accelerate Lab',
     period: 'May 2026 – Jun 2026',
     summary:
@@ -97,7 +99,7 @@ export const projects = [
   {
     slug: 'mri-quadrature-digitizer',
     title: 'Wireless Quadrature Digitizer for MRI Radar',
-    subtitle: 'Dual-channel high-resolution digitizer for contactless vital-sign monitoring',
+    subtitle: 'Dual channel high-res digitizer for radar-based vital signs monitoring',
     org: 'Stanford Magnetic Resonance Systems Research Lab',
     period: 'Jun 2025 – Jan 2026',
     summary:
@@ -151,6 +153,38 @@ export const projects = [
         ],
       },
     ],
+  },
+
+  // ---------------------------------------------------------------------
+  // TODO(Finley): fill in title, subtitle, summary, and sections.
+  // Personal project, so `org` and `period` are left empty on purpose —
+  // the meta line is hidden entirely when both are blank.
+  // The board silkscreen reads "RF Sense v1.0" if you want that as a title.
+  // ---------------------------------------------------------------------
+  {
+    slug: 'esp32-pcb',
+    title: 'ESP32 PCB',
+    subtitle: '',
+    org: '',
+    period: '',
+    summary: '',
+    links: [
+      // { label: 'GitHub', href: 'https://github.com/fwdesai/...' },
+    ],
+    cover: '/images/projects/esp32-pcb/board_assembled.webp',
+    images: [
+      {
+        src: '/images/projects/esp32-pcb/board_assembled.webp',
+        alt: 'Assembled RF Sense v1.0 board with USB-C connector and reset and boot buttons',
+        caption: '',
+      },
+      {
+        src: '/images/projects/esp32-pcb/board_virtual.webp',
+        alt: '3D render of the RF Sense v1.0 board showing the PCB trace antenna',
+        caption: '',
+      },
+    ],
+    sections: [],
   },
 ];
 

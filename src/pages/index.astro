@@ -9,7 +9,9 @@ const featured = projects.slice(0, 3);
 ---
 
 <Base wide>
-  <section class="mx-auto max-w-3xl">
+  <!-- Full width, not max-w-3xl, so the name and buttons line up with the
+       "Selected Projects" heading and the card grid below. -->
+  <section>
     <h1 class="text-4xl leading-tight sm:text-5xl">{SITE.name}</h1>
 
     <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">

@@ -138,7 +138,7 @@ export const projects = [
           'See the [conference paper](https://drive.google.com/file/d/1aab2UVg8FGkZnafTaW_y5S8W_sdfdBil/view) for a more detailed writeup.',
           "A recent trend in MRI technology has been electromagnetic non-contact respiratory/cardiac sensing. For initial research prototyping, network analyzer time sweeps, software-defined"+
           " radios (e.g. Ettus, BladeRF, Pluto) and retail dual-channel digitizers (e.g. Digilent Analog Discovery) greatly accelerate development, but limit dynamic range"+
-          " and MRI siting. This board serves as a custom quadrature digitizer chain employing high-dynamic-range ADCs, with WiFi/Bluetooth interfacing, and the option"+
+          " and MRI compatibility. This board serves as a custom quadrature digitizer chain employing high-dynamic-range ADCs, with WiFi/Bluetooth interfacing, and the option"+
           " to employ mm-wave modules or quadrature demodulators for arbitrary frequency sensing."
         ],
       },

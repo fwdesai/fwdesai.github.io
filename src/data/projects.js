@@ -31,6 +31,68 @@
 
 export const projects = [
   {
+    slug: 'mri-quadrature-digitizer',
+    title: 'Wireless Quadrature Digitizer for MRI Radar',
+    subtitle: 'Dual-channel high-res digitizer for radar-based vital signs monitoring',
+    org: 'Stanford Magnetic Resonance Systems Research Lab',
+    period: 'Jun 2025 – Jan 2026',
+    summary:
+      'A custom dual-channel quadrature digitizer with high-resolution ADCs and an analog ' +
+      'front-end for continuous-wave radar vital-sign monitoring inside an MRI bore — about ' +
+      '80 dB better dynamic range than the SDR-based approach it replaced.',
+    links: [
+      {
+        label: 'Conference paper',
+        href: 'https://drive.google.com/file/d/1aab2UVg8FGkZnafTaW_y5S8W_sdfdBil/view',
+      },
+      { label: 'GitHub', href: 'https://github.com/fwdesai/iq_radar_digitizer' },
+    ],
+    cover: '/images/projects/mri-quadrature-digitizer/board_v2.webp',
+
+    images: [
+      {
+        src: '/images/projects/mri-quadrature-digitizer/assembled.webp',
+        alt: 'Assembled quadrature digitizer board',
+      },
+      {
+        src: '/images/projects/mri-quadrature-digitizer/block_diagram.webp',
+        alt: 'Block diagram of the digitizer signal chain',
+      },
+    ],
+
+    sections: [
+      {
+        heading: 'Overview',
+        body: [
+          'See the [conference paper](https://drive.google.com/file/d/1aab2UVg8FGkZnafTaW_y5S8W_sdfdBil/view) for a more detailed writeup.',
+          "A recent trend in MRI technology has been electromagnetic non-contact respiratory/cardiac sensing. For initial research prototyping, network analyzer time sweeps, software-defined"+
+          " radios (e.g. Ettus, BladeRF, Pluto) and retail dual-channel digitizers (e.g. Digilent Analog Discovery) greatly accelerate development, but limit dynamic range"+
+          " and MRI compatibility. This board serves as a custom quadrature digitizer chain employing high-dynamic-range ADCs, with WiFi/Bluetooth interfacing, and the option"+
+          " to employ mm-wave modules or quadrature demodulators for arbitrary frequency sensing."
+        ],
+      },
+      {
+        heading: 'Hardware',
+        body: [
+            "- ADA4940-2: Dual-channel differential amplifier.",
+            "- LTC2508: 32-bit differential SAR ADC, one for each channel. Acquisition synced through the interface with the Pico W.",
+            "- Raspberry Pi Pico W: Chosen for its programmable I/O (PIO) subsystem which acts as a set of dedicated coprocessors running independently of the main CPU cores."+
+            " Interfaces with the ADCs and allows for WiFi/Bluetooth communication."
+        ],
+      },
+      {
+        heading: 'Firmware and Signal Processing',
+        body: [
+          "A custom driver was developed in MicroPython using the Pi Pico’s Programmable I/O (PIO) subsystem to provide a high-speed interface to the ADCs."+
+          " PIO programs use a compact instruction set in which each instruction executes in a single clock cycle, allowing FPGA-like timing and speed."+
+          " This approach offloads ADC communication from the CPU allowing it to focus on wireless data transmission.",
+          "Singular spectrum analysis was used to isolate respiratory and cardiac motion from the radar signal.",
+        ],
+      },
+    ],
+  },
+
+  {
     slug: 'robotics-chip-on-board',
     title: 'Robotics Chip-on-Board Module',
     subtitle: 'High-speed HDI board for robot inference',
@@ -101,68 +163,6 @@ export const projects = [
     ],
   },
 
-  {
-    slug: 'mri-quadrature-digitizer',
-    title: 'Wireless Quadrature Digitizer for MRI Radar',
-    subtitle: 'Dual-channel high-res digitizer for radar-based vital signs monitoring',
-    org: 'Stanford Magnetic Resonance Systems Research Lab',
-    period: 'Jun 2025 – Jan 2026',
-    summary:
-      'A custom dual-channel quadrature digitizer with high-resolution ADCs and an analog ' +
-      'front-end for continuous-wave radar vital-sign monitoring inside an MRI bore — about ' +
-      '80 dB better dynamic range than the SDR-based approach it replaced.',
-    links: [
-      {
-        label: 'Conference paper',
-        href: 'https://drive.google.com/file/d/1aab2UVg8FGkZnafTaW_y5S8W_sdfdBil/view',
-      },
-      { label: 'GitHub', href: 'https://github.com/fwdesai/iq_radar_digitizer' },
-    ],
-    cover: '/images/projects/mri-quadrature-digitizer/board_v2.webp',
-
-    images: [
-      {
-        src: '/images/projects/mri-quadrature-digitizer/assembled.webp',
-        alt: 'Assembled quadrature digitizer board',
-      },
-      {
-        src: '/images/projects/mri-quadrature-digitizer/block_diagram.webp',
-        alt: 'Block diagram of the digitizer signal chain',
-      },
-    ],
-
-    sections: [
-      {
-        heading: 'Overview',
-        body: [
-          'See the [conference paper](https://drive.google.com/file/d/1aab2UVg8FGkZnafTaW_y5S8W_sdfdBil/view) for a more detailed writeup.',
-          "A recent trend in MRI technology has been electromagnetic non-contact respiratory/cardiac sensing. For initial research prototyping, network analyzer time sweeps, software-defined"+
-          " radios (e.g. Ettus, BladeRF, Pluto) and retail dual-channel digitizers (e.g. Digilent Analog Discovery) greatly accelerate development, but limit dynamic range"+
-          " and MRI compatibility. This board serves as a custom quadrature digitizer chain employing high-dynamic-range ADCs, with WiFi/Bluetooth interfacing, and the option"+
-          " to employ mm-wave modules or quadrature demodulators for arbitrary frequency sensing."
-        ],
-      },
-      {
-        heading: 'Hardware',
-        body: [
-            "- ADA4940-2: Dual-channel differential amplifier.",
-            "- LTC2508: 32-bit differential SAR ADC, one for each channel. Acquisition synced through the interface with the Pico W.",
-            "- Raspberry Pi Pico W: Chosen for its programmable I/O (PIO) subsystem which acts as a set of dedicated coprocessors running independently of the main CPU cores."+
-            " Interfaces with the ADCs and allows for WiFi/Bluetooth communication."
-        ],
-      },
-      {
-        heading: 'Firmware and Signal Processing',
-        body: [
-          "A custom driver was developed in MicroPython using the Pi Pico’s Programmable I/O (PIO) subsystem to provide a high-speed interface to the ADCs."+
-          " PIO programs use a compact instruction set in which each instruction executes in a single clock cycle, allowing FPGA-like timing and speed."+
-          " This approach offloads ADC communication from the CPU allowing it to focus on wireless data transmission.",
-          "Singular spectrum analysis was used to isolate respiratory and cardiac motion from the radar signal.",
-        ],
-      },
-    ],
-  },
-
   // ---------------------------------------------------------------------
   // TODO(Finley): fill in title, subtitle, summary, and sections.
   // Personal project, so `org` and `period` are left empty on purpose —
@@ -201,8 +201,7 @@ export const projects = [
         ],
       }
     ],
-  },
-];
+  },];
 
 // Look up a single project by its slug.
 export function getProject(slug) {

@@ -74,11 +74,11 @@ export const projects = [
       'peripheral interfaces and clock routing optimized for operation up to 800 MHz.',
     links: [{ label: 'GitHub', href: 'https://github.com/fwdesai/KIRIN-Test-Board' }],
 
-    cover: '/images/projects/accelerator-test-pcb/board.png',
+    cover: '/images/projects/accelerator-test-pcb/board.webp',
 
     images: [
       {
-        src: '/images/projects/accelerator-test-pcb/board.png',
+        src: '/images/projects/accelerator-test-pcb/board.webp',
         alt: 'KIRIN test board layout, top side',
       },
     ],
@@ -111,15 +111,15 @@ export const projects = [
       },
       { label: 'GitHub', href: 'https://github.com/fwdesai/iq_radar_digitizer' },
     ],
-    cover: '/images/projects/mri-quadrature-digitizer/board_v2.png',
+    cover: '/images/projects/mri-quadrature-digitizer/board_v2.webp',
 
     images: [
       {
-        src: '/images/projects/mri-quadrature-digitizer/assembled.png',
+        src: '/images/projects/mri-quadrature-digitizer/assembled.webp',
         alt: 'Assembled quadrature digitizer board',
       },
       {
-        src: '/images/projects/mri-quadrature-digitizer/block_diagram.png',
+        src: '/images/projects/mri-quadrature-digitizer/block_diagram.webp',
         alt: 'Block diagram of the digitizer signal chain',
       },
     ],

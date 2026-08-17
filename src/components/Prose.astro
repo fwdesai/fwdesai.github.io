@@ -1,6 +1,7 @@
 ---
 // Renders a `sections` array from src/data/projects.js.
 // Each body string is a paragraph; a string starting with '- ' is a bullet.
+// Inline links use [label](url).
 const { sections = [] } = Astro.props;
 
 // Group consecutive '- ' strings into single <ul> blocks.
@@ -17,6 +18,26 @@ function toBlocks(body) {
   }
   return blocks;
 }
+
+// Split a line into plain-text and link segments. Deliberately a tiny parser
+// rather than raw HTML in the data file — content stays data, and a typo
+// can't break the page markup.
+const LINK = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+
+function toSegments(text) {
+  const segments = [];
+  let cursor = 0;
+  for (const match of text.matchAll(LINK)) {
+    if (match.index > cursor) segments.push({ text: text.slice(cursor, match.index) });
+    segments.push({ text: match[1], href: match[2] });
+    cursor = match.index + match[0].length;
+  }
+  if (cursor < text.length) segments.push({ text: text.slice(cursor) });
+  return segments;
+}
+
+// Only send off-site links to a new tab; an internal '/path' should not.
+const isExternal = (href) => /^https?:\/\//.test(href);
 ---
 
 <div class="prose">
@@ -28,11 +49,39 @@ function toBlocks(body) {
           block.type === 'list' ? (
             <ul>
               {block.items.map((item) => (
-                <li>{item}</li>
+                <li>
+                  {toSegments(item).map((seg) =>
+                    seg.href ? (
+                      <a
+                        href={seg.href}
+                        target={isExternal(seg.href) ? '_blank' : undefined}
+                        rel={isExternal(seg.href) ? 'noopener' : undefined}
+                      >
+                        {seg.text}
+                      </a>
+                    ) : (
+                      seg.text
+                    )
+                  )}
+                </li>
               ))}
             </ul>
           ) : (
-            <p>{block.text}</p>
+            <p>
+              {toSegments(block.text).map((seg) =>
+                seg.href ? (
+                  <a
+                    href={seg.href}
+                    target={isExternal(seg.href) ? '_blank' : undefined}
+                    rel={isExternal(seg.href) ? 'noopener' : undefined}
+                  >
+                    {seg.text}
+                  </a>
+                ) : (
+                  seg.text
+                )
+              )}
+            </p>
           )
         )}
       </section>

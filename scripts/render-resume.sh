@@ -37,11 +37,18 @@ trap 'rm -rf "$TMP"' EXIT
 # 180 DPI gives a crisp image on retina displays without bloating the file.
 pdftoppm -r 180 -png -singlefile "$PDF" "$TMP/page1"
 
-# Lossless WebP keeps text edges sharp; on a text-only page it compresses
-# far better than PNG.
-cwebp -quiet -lossless -m 6 "$TMP/page1.png" -o public/resume-preview.webp
+# Near-lossless keeps text edges and link colours sharp while compressing
+# noticeably better than full lossless on a text page (measured 135 KB vs
+# 164 KB). Plain lossy WebP is worse than useless here — it subsamples chroma
+# and came out LARGER than lossless (326 KB at q90) on this kind of content.
+cwebp -quiet -near_lossless 40 -m 6 "$TMP/page1.png" -o public/resume-preview.webp
 
-echo "wrote public/resume-preview.webp ($(du -h public/resume-preview.webp | cut -f1))"
+# `du` reports block-rounded disk usage, which overstates small files — report
+# the real byte count instead.
+bytes=$(wc -c < public/resume-preview.webp | tr -d ' ')
+dims=$(sips -g pixelWidth -g pixelHeight public/resume-preview.webp 2>/dev/null \
+  | awk '/pixelWidth/{w=$2} /pixelHeight/{h=$2} END{print w"x"h}')
+echo "wrote public/resume-preview.webp — ${dims}, $((bytes / 1024)) KB"
 echo
-echo "If the page count or dimensions changed, update the width/height"
-echo "attributes on the <img> in src/pages/resume.astro."
+echo "If the dimensions above differ from the width/height on the <img> in"
+echo "src/pages/resume.astro, update them there to match."

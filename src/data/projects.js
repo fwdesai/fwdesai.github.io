@@ -99,8 +99,7 @@ export const projects = [
     org: 'Stanford Tambe Lab',
     period: 'In Progress',
     summary:
-      'A roughly 16-layer high-speed board in Altium integrating ~50 ICs, including ' +
-      'wire-bonded devices, for on-robot inference.',
+      "IN PROGRESS. A 16-layer HDI board integrating custom silicon (designed by a PhD student) for robot inference. HyperBus interface runs at DDR speeds up to 800 MHz.",
     links: [
       // { label: 'GitHub', href: 'https://github.com/fwdesai/...' },
     ],
@@ -112,8 +111,24 @@ export const projects = [
       {
         heading: 'Overview',
         body: [
-          'Designing schematics and layout for a ~16-layer high-speed PCB in Altium ' +
-            'for robot inference, integrating approximately 50 ICs including wire-bonded devices.',
+          'Designing the schematics and layout for a 16-layer HDI board that carries a custom ' +
+            'inference chipset — a central hub chip plus 16 spoke chips — designed by a PhD ' +
+            'student in the lab. Roughly 50 ICs sit on the board in total.',
+          'Fanning DDR-speed links out from the hub to all 16 spokes at that density is the ' +
+            'constraint that drives the rest of the design: the layer count, the via ' +
+            'architecture, and the impedance targets all follow from it.',
+        ],
+      },
+      {
+        heading: 'Hardware',
+        body: [
+          '- Custom silicon designed by a PhD student in the lab: one central hub chip and 16 ' +
+            'spoke chips.',
+          '- Each spoke chip is paired with its own Infineon flash and RAM.',
+          '- The hub connects to the spokes over a HyperBus interface running at DDR speeds up ' +
+            'to 800 MHz.',
+          '- A 240-pin connector carries board power along with the interfaces that leave the ' +
+            'board, including UART.',
         ],
       },
       {
@@ -135,8 +150,8 @@ export const projects = [
     org: 'Stanford Accelerate Lab',
     period: 'May 2026 – Jun 2026',
     summary:
-      'A high-speed test board in KiCad for a custom hardware accelerator, with JTAG and ' +
-      'peripheral interfaces and clock routing optimized for operation up to 800 MHz.',
+      "A test board in KiCad for a PhD's student custom hardware accelerator, with JTAG and " +
+      "peripheral interfaces and clock routing optimized for operation up to 600 MHz.",
     links: [{ label: 'GitHub', href: 'https://github.com/fwdesai/KIRIN-Test-Board' }],
 
     cover: '/images/projects/accelerator-test-pcb/board.webp',
@@ -155,20 +170,13 @@ export const projects = [
       {
         heading: 'Overview',
         body: [
-          'Designed a high-speed test PCB in KiCad for a custom hardware accelerator, ' +
-            'integrating JTAG and peripheral interfaces and optimizing clock routing for ' +
-            'operation up to 800 MHz.',
+            "A test board in KiCad for a PhD's student custom hardware accelerator, with JTAG and " +
+            "peripheral interfaces and clock routing optimized for operation up to 600 MHz.",
         ],
       },
     ],
   },
 
-  // ---------------------------------------------------------------------
-  // TODO(Finley): fill in title, subtitle, summary, and sections.
-  // Personal project, so `org` and `period` are left empty on purpose —
-  // the meta line is hidden entirely when both are blank.
-  // The board silkscreen reads "RF Sense v1.0" if you want that as a title.
-  // ---------------------------------------------------------------------
   {
     slug: 'esp32-pcb',
     title: 'ESP32 PCB with Integrated Trace Antenna',

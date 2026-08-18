@@ -114,9 +114,6 @@ export const projects = [
           'Designing the schematics and layout for a 16-layer HDI board that carries a custom ' +
             'inference chipset — a central hub chip plus 16 spoke chips — designed by a PhD ' +
             'student in the lab. Roughly 50 ICs sit on the board in total.',
-          'Fanning DDR-speed links out from the hub to all 16 spokes at that density is the ' +
-            'constraint that drives the rest of the design: the layer count, the via ' +
-            'architecture, and the impedance targets all follow from it.',
         ],
       },
       {

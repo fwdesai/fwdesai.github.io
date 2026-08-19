@@ -35,7 +35,7 @@ export const projects = [
     title: 'Wireless Quadrature Digitizer for MRI Radar',
     subtitle: 'Dual-channel high-res digitizer for radar-based vital signs monitoring',
     org: 'Stanford Magnetic Resonance Systems Research Lab',
-    period: 'Jun 2025 – Jan 2026',
+    period: null,
     summary:
       'A custom dual-channel quadrature digitizer with high-resolution ADCs and an analog ' +
       'front-end for continuous-wave radar vital-sign monitoring inside an MRI bore — about ' +
@@ -85,7 +85,7 @@ export const projects = [
         body: [
           "A custom driver was developed in MicroPython using the Pi Pico’s Programmable I/O (PIO) subsystem to provide a high-speed interface to the ADCs."+
           " PIO programs use a compact instruction set in which each instruction executes in a single clock cycle, allowing FPGA-like timing and speed."+
-          " This approach offloads ADC communication from the CPU allowing it to focus on wireless data transmission.",
+          " This approach offloads ADC communication from the CPU, allowing it to focus on wireless data transmission.",
           "Singular spectrum analysis was used to isolate respiratory and cardiac motion from the radar signal.",
         ],
       },
@@ -95,7 +95,7 @@ export const projects = [
   {
     slug: 'robotics-chip-on-board',
     title: 'Robotics Chip-on-Board Module',
-    subtitle: 'High-speed HDI board for robot inference',
+    subtitle: 'High-speed HDI board for robotics',
     org: 'Stanford Tambe Lab',
     period: 'In Progress',
     summary:
@@ -129,7 +129,7 @@ export const projects = [
         ],
       },
       {
-        heading: 'Design work',
+        heading: 'Design Work',
         body: [
           '- Developed the controlled-impedance stackup and the microvia / blind-via architecture.',
           '- Set DDR3-speed routing constraints from pre-layout signal-integrity analysis in ' +
@@ -145,9 +145,9 @@ export const projects = [
     title: 'Hardware Accelerator Test PCB',
     subtitle: 'Test platform for a custom accelerator',
     org: 'Stanford Accelerate Lab',
-    period: 'May 2026 – Jun 2026',
+    period: null,
     summary:
-      "A test board in KiCad for a PhD's student custom hardware accelerator, with JTAG and " +
+      "A test board in KiCad for a PhD student's custom hardware accelerator, with JTAG and " +
       "peripheral interfaces and clock routing optimized for operation up to 600 MHz.",
     links: [{ label: 'GitHub', href: 'https://github.com/fwdesai/KIRIN-Test-Board' }],
 
@@ -167,7 +167,7 @@ export const projects = [
       {
         heading: 'Overview',
         body: [
-            "A test board in KiCad for a PhD's student custom hardware accelerator, with JTAG and " +
+            "A test board in KiCad for a PhD student's custom hardware accelerator, with JTAG and " +
             "peripheral interfaces and clock routing optimized for operation up to 600 MHz.",
         ],
       },
@@ -202,11 +202,12 @@ export const projects = [
       {
         heading: 'Overview',
         body: [
-            "Inspired by Phil's Lab YouTube Channel. ESP32-based PCB with a meandered printed inverted-F antenna for communication at 2.4 GHz. Has an IMU connected via a SPI interface." 
+            "Inspired by Phil's Lab YouTube channel. ESP32-based PCB with a meandered printed inverted-F antenna for communication at 2.4 GHz. Has an IMU connected via an SPI interface." 
         ],
       }
     ],
-  },];
+  },
+];
 
 // Look up a single project by its slug.
 export function getProject(slug) {

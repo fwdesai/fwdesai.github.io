@@ -1,7 +1,11 @@
 ---
 import ImagePlaceholder from './ImagePlaceholder.astro';
 
-const { project } = Astro.props;
+// `as` sets the card title's heading level. The home page has an <h2>
+// "Selected Projects" above the grid so cards are h3 there; /projects goes
+// straight from its <h1> to the cards, so they must be h2 to avoid skipping
+// a level.
+const { project, as: Heading = 'h3' } = Astro.props;
 const href = `/projects/${project.slug}`;
 
 // A personal project may have no org and no dates — drop the separator rather
@@ -35,13 +39,13 @@ const meta = [project.org, project.period].filter(Boolean).join(' · ');
       )
     }
 
-    <h3 class="mb-2 text-xl leading-snug">
+    <Heading class="mb-2 text-xl leading-snug">
       <a href={href} class="transition-colors group-hover:text-accent">
         {project.title}
-        <!-- Stretch the link across the whole card so the entire card is clickable -->
+        {/* Stretch the link across the whole card so the entire card is clickable */}
         <span class="absolute inset-0" aria-hidden="true"></span>
       </a>
-    </h3>
+    </Heading>
 
     <p class="flex-1 text-sm leading-relaxed">{project.summary}</p>
   </div>

@@ -11,10 +11,10 @@ import { SITE } from '../data/site.js';
     <h1 class="text-4xl leading-tight">Resume</h1>
 
     <div class="mt-6 flex flex-wrap gap-3">
-      <!-- Top-level navigation to the PDF. This is deliberately a plain link
+      {/* Top-level navigation to the PDF. This is deliberately a plain link
            with NO `download` attribute: it opens the browser's own full-screen
            PDF viewer, which is the one path that works well on both iOS
-           Safari and Chrome on Android. -->
+           Safari and Chrome on Android. */}
       <a
         href={SITE.resumePdf}
         target="_blank"
@@ -33,11 +33,11 @@ import { SITE } from '../data/site.js';
     </div>
   </header>
 
-  <!-- The in-page preview is a rendered image of the PDF rather than an
+  {/* The in-page preview is a rendered image of the PDF rather than an
        <iframe>. Embedded PDFs are unreliable on mobile — iOS Safari renders a
        frozen, unscrollable first page and Chrome on Android often shows
        nothing at all in a subframe. The image always works; the buttons above
-       hand off to a real PDF viewer for anyone who wants text selection. -->
+       hand off to a real PDF viewer for anyone who wants text selection. */}
   <figure>
     <a href={SITE.resumePdf} target="_blank" rel="noopener" class="block">
       <img

@@ -29,7 +29,7 @@ const links = NAV.map((item) => ({
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
 
-    <!-- Social preview -->
+    {/* Social preview */}
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
@@ -38,7 +38,7 @@ const links = NAV.map((item) => ({
   </head>
 
   <body class="flex min-h-screen flex-col">
-    <!-- Skip link for keyboard and screen-reader users -->
+    {/* Skip link for keyboard and screen-reader users */}
     <a
       href="#main"
       class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
@@ -50,7 +50,7 @@ const links = NAV.map((item) => ({
       <div
         class={`mx-auto flex w-full items-center justify-end gap-6 px-6 py-4 sm:py-5 ${wide ? 'max-w-6xl' : 'max-w-3xl'}`}
       >
-        <!-- Wide screens: links laid out horizontally. -->
+        {/* Wide screens: links laid out horizontally. */}
         <nav aria-label="Main" class="hidden sm:block">
           <ul class="flex items-center gap-x-7 text-sm">
             {
@@ -73,17 +73,17 @@ const links = NAV.map((item) => ({
           </ul>
         </nav>
 
-        <!-- Narrow screens: collapse to a menu button.
-             Built on <details> rather than JavaScript — it's keyboard
-             operable and announces its open/closed state to screen readers
-             for free, and the site ships no client JS. Each link is a full
-             page navigation, so the menu resets closed on its own. -->
+        {/* Narrow screens: collapse to a menu button.
+            Built on <details> rather than JavaScript — it's keyboard operable
+            and announces its open/closed state to screen readers for free, and
+            the site ships no client JS. Each link is a full page navigation, so
+            the menu resets closed on its own. */}
         <details class="nav-menu relative sm:hidden">
           <summary
             class="flex size-11 cursor-pointer items-center justify-center rounded-md text-ink transition-colors hover:text-accent"
             aria-label="Menu"
           >
-            <!-- Hamburger, swapped for an X while open -->
+            {/* Hamburger, swapped for an X while open */}
             <svg
               class="icon-open size-6"
               viewBox="0 0 24 24"

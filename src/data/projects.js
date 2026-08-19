@@ -132,7 +132,7 @@ export const projects = [
         heading: 'Design Work',
         body: [
           '- Developed the controlled-impedance stackup and the microvia / blind-via architecture.',
-          '- Set DDR3-speed routing constraints from pre-layout signal-integrity analysis in ' +
+          '- Set DDR-speed routing constraints from pre-layout signal-integrity analysis in ' +
             'MATLAB Parallel Link Designer and Signal Integrity Toolbox.',
           '- Integrated wire-bonded die alongside conventionally packaged parts on the same substrate.',
         ],

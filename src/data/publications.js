@@ -34,7 +34,7 @@
 // exact published titles when you get a chance.
 export const publications = [
   {
-    type: 'Paper',
+    type: 'Conference Paper',
     title: 'Custom High-Resolution Wireless Quadrature Digitizer PCB for MRI Radar Prototyping',
     href: 'https://drive.google.com/file/d/1aab2UVg8FGkZnafTaW_y5S8W_sdfdBil/view',
     related: [],

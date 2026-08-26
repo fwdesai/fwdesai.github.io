@@ -7,6 +7,7 @@ export const SITE = {
   name: 'Finley Desai',
   role: 'Electrical Engineering, Stanford',
   email: 'fwdesai@stanford.edu',
+  linkedin: 'https://www.linkedin.com/in/finleydesai/',
   description:
     'Finley Desai — electrical engineering at Stanford. High-speed PCB design, ' +
     'analog front-ends, and embedded systems for research instrumentation.',

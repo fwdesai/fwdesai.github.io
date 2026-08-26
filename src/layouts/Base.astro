@@ -142,13 +142,21 @@ const links = NAV.map((item) => ({
 
     <footer class="border-t border-rule">
       <div
-        class={`mx-auto flex w-full px-6 py-8 text-sm text-muted ${wide ? 'max-w-6xl' : 'max-w-3xl'}`}
+        class={`mx-auto flex w-full flex-wrap gap-x-6 gap-y-2 px-6 py-8 text-sm text-muted ${wide ? 'max-w-6xl' : 'max-w-3xl'}`}
       >
         <a
           href={`mailto:${SITE.email}`}
           class="text-accent underline underline-offset-2 hover:decoration-2"
         >
           {SITE.email}
+        </a>
+        <a
+          href={SITE.linkedin}
+          target="_blank"
+          rel="noopener"
+          class="text-accent underline underline-offset-2 hover:decoration-2"
+        >
+          LinkedIn
         </a>
       </div>
     </footer>

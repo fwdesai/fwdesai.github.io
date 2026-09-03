@@ -111,9 +111,9 @@ export const projects = [
       {
         heading: 'Overview',
         body: [
-          'Designing the schematics and layout for a 16-layer HDI board that carries a custom ' +
-            'inference chipset — a central hub chip plus 16 spoke chips — designed by a PhD ' +
-            'student in the lab. Roughly 50 ICs sit on the board in total.',
+          'Designing a ~16-layer chip-on-board module in Altium for on-robot inference, ' +
+            'taking it from board-level schematic through layout. It integrates roughly 50 ' +
+            'ICs, including wire-bonded bare die.',
         ],
       },
       {
@@ -131,10 +131,12 @@ export const projects = [
       {
         heading: 'Design Work',
         body: [
-          '- Developed the controlled-impedance stackup and the microvia / blind-via architecture.',
-          '- Set DDR-speed routing constraints from pre-layout signal-integrity analysis in ' +
-            'MATLAB Parallel Link Designer and Signal Integrity Toolbox.',
-          '- Integrated wire-bonded die alongside conventionally packaged parts on the same substrate.',
+          '- Developing the controlled-impedance stackup, the microvia / blind-via ' +
+            'architecture, and the DDR-speed routing constraints, using pre-layout ' +
+            'signal-integrity simulation in the MATLAB Signal Integrity Toolbox to close ' +
+            'impedance and timing budgets before fabrication.',
+          '- Created Altium library footprints and bond-pad land patterns for the custom die, ' +
+            'drawing die-attach and wire-bond geometry directly in layout.',
         ],
       },
     ],

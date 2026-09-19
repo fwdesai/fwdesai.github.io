@@ -29,3 +29,8 @@ pnpm-debug.log*
 # editor swap files
 *.swp
 *.swo
+
+# Resume drops in the project root are staging only — the published copy
+# lives in public/. This keeps un-vetted versions out of the public repo.
+# (Leading slash = root only, so public/*.pdf is still tracked.)
+/*.pdf

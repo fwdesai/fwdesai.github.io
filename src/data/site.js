@@ -15,7 +15,7 @@ export const SITE = {
   // Filename of the resume PDF inside public/. Swap this string when you
   // upload a newer version (see README for the one command to regenerate
   // the preview image).
-  resumePdf: '/Desai_Resume_8_25.pdf',
+  resumePdf: '/Desai_Resume_9_18_site.pdf',
   resumeImage: '/resume-preview.webp',
 };
 

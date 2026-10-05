@@ -1,6 +1,25 @@
 ---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import Base from '../layouts/Base.astro';
 import { SITE } from '../data/site.js';
+
+// The resume PDF and its preview keep the same filenames across updates, but
+// GitHub Pages serves them with `cache-control: max-age=600`. Without this a
+// returning visitor — or anyone who just looked at the page — keeps the old
+// resume for up to ten minutes after a deploy. Appending a hash of the file
+// contents gives each version its own URL, so an update is picked up
+// immediately and an unchanged file still caches normally.
+function versioned(publicPath) {
+  if (!publicPath?.startsWith('/')) return publicPath;
+  const bytes = readFileSync(join(process.cwd(), 'public', publicPath));
+  const hash = createHash('sha256').update(bytes).digest('hex').slice(0, 8);
+  return `${publicPath}?v=${hash}`;
+}
+
+const resumePdf = versioned(SITE.resumePdf);
+const resumeImage = versioned(SITE.resumeImage);
 ---
 
 <Base
@@ -16,7 +35,7 @@ import { SITE } from '../data/site.js';
            PDF viewer, which is the one path that works well on both iOS
            Safari and Chrome on Android. */}
       <a
-        href={SITE.resumePdf}
+        href={resumePdf}
         target="_blank"
         rel="noopener"
         class="rounded-md bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-opacity hover:opacity-85"
@@ -24,7 +43,7 @@ import { SITE } from '../data/site.js';
         Open PDF ↗
       </a>
       <a
-        href={SITE.resumePdf}
+        href={resumePdf}
         download
         class="rounded-md border border-rule px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:border-accent hover:text-accent"
       >
@@ -39,9 +58,9 @@ import { SITE } from '../data/site.js';
        nothing at all in a subframe. The image always works; the buttons above
        hand off to a real PDF viewer for anyone who wants text selection. */}
   <figure>
-    <a href={SITE.resumePdf} target="_blank" rel="noopener" class="block">
+    <a href={resumePdf} target="_blank" rel="noopener" class="block">
       <img
-        src={SITE.resumeImage}
+        src={resumeImage}
         alt={`Resume for ${SITE.name}. Use the Open PDF button above for a selectable-text version.`}
         width="1529"
         height="1980"

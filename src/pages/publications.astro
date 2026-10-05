@@ -1,6 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
-import { publications } from '../data/publications.js';
+import { publications, SELF_NAMES } from '../data/publications.js';
+
+// Split an author list into runs so Finley's name can be emphasized without
+// putting markup in the data file.
+function authorParts(authors = []) {
+  return authors.map((name, i) => ({
+    name,
+    isSelf: SELF_NAMES.includes(name),
+    separator: i < authors.length - 1 ? ', ' : '',
+  }));
+}
 ---
 
 <Base title="Publications" description="Papers, abstracts, and posters by Finley Desai.">
@@ -30,14 +40,32 @@ import { publications } from '../data/publications.js';
                 pub.title
               )}
             </h2>
+
+            {pub.authors?.length > 0 && (
+              <p class="mt-1.5 text-sm leading-relaxed">
+                {authorParts(pub.authors).map((a) =>
+                  a.isSelf ? (
+                    <>
+                      <strong class="font-medium text-ink">{a.name}</strong>
+                      {a.separator}
+                    </>
+                  ) : (
+                    a.name + a.separator
+                  )
+                )}
+              </p>
+            )}
+
+            {pub.venue && <p class="mt-1 text-sm text-muted">{pub.venue}</p>}
+
             {pub.href && (
               <a
                 href={pub.href}
                 target="_blank"
                 rel="noopener"
-                class="mt-1.5 inline-block text-sm break-all text-accent underline underline-offset-4 hover:decoration-2"
+                class="mt-1.5 inline-block text-sm text-accent underline underline-offset-4 hover:decoration-2"
               >
-                {pub.href}
+                {pub.linkLabel ?? 'Link'} ↗
               </a>
             )}
 
@@ -65,14 +93,32 @@ import { publications } from '../data/publications.js';
                         item.title
                       )}
                     </h3>
+
+                    {item.authors?.length > 0 && (
+                      <p class="mt-1 text-sm leading-relaxed">
+                        {authorParts(item.authors).map((a) =>
+                          a.isSelf ? (
+                            <>
+                              <strong class="font-medium text-ink">{a.name}</strong>
+                              {a.separator}
+                            </>
+                          ) : (
+                            a.name + a.separator
+                          )
+                        )}
+                      </p>
+                    )}
+
+                    {item.venue && <p class="mt-1 text-sm text-muted">{item.venue}</p>}
+
                     {item.href && (
                       <a
                         href={item.href}
                         target="_blank"
                         rel="noopener"
-                        class="mt-1 inline-block text-sm break-all text-accent underline underline-offset-4 hover:decoration-2"
+                        class="mt-1 inline-block text-sm text-accent underline underline-offset-4 hover:decoration-2"
                       >
-                        {item.href}
+                        {item.linkLabel ?? 'Link'} ↗
                       </a>
                     )}
                   </li>

@@ -31,11 +31,122 @@
 
 export const projects = [
   {
+    slug: 'robotics-chip-on-board',
+    title: 'Robotics Chip-on-Board Module',
+    subtitle: 'Custom-silicon module with 49 wire-bonded bare dies',
+    org: 'Stanford Tambe Lab',
+    period: 'Jun 2026 – Present',
+    summary:
+      'A ~16-layer HDI module for on-robot inference with 49 wire-bonded bare dies: ' +
+      'a custom hub chip, 16 custom spoke chips, and their flash and RAM. The hub ' +
+      'connects to the spokes over a HyperBus-style interface running at up to 1600 MT/s.',
+    links: [
+      // { label: 'GitHub', href: 'https://github.com/fwdesai/...' },
+    ],
+    // Watermarked copy — the clean original is board_v0.webp in the same
+    // folder, ready to swap in when the board is no longer a draft.
+    cover: '/images/projects/robotics-chip-on-board/board_v0-draft.webp',
+    images: [],
+    sections: [
+      {
+        heading: 'Overview',
+        body: [
+          'Designing a ~16-layer chip-on-board module in Altium Designer for on-robot ' +
+            'inference, taking it from board-level schematic through layout. 49 of its ICs ' +
+            'are bare dies wire-bonded directly to the board; the few remaining ICs handle ' +
+            'clocking and are packaged.',
+        ],
+      },
+      {
+        heading: 'Hardware',
+        body: [
+          '- Custom silicon designed by a PhD student in the lab: one central hub chip and 16 ' +
+            'spoke chips.',
+          '- Each spoke chip is paired with its own Infineon flash and RAM, also as bare die, ' +
+            'for 32 memory dies in total.',
+          '- The hub connects to the spokes over a HyperBus-style interface running at up to ' +
+            '1600 MT/s (800 MHz DDR), routed fly-by past each spoke.',
+          '- High-density connectors carry board power, UART, and the HyperBus-style bus off ' +
+            'the board.',
+        ],
+      },
+      {
+        heading: 'Design Work',
+        body: [
+          '- Created Altium library footprints and bond-pad land patterns for the custom ' +
+            'dies, drawing die-attach and wire-bond geometry directly in layout, with ' +
+            'VSS/VDD/VDDIO power rings around each hub and spoke site.',
+          "- Moved the HyperBus landing pads inside each spoke's power rings. The bond wire " +
+            'is part of each fly-by stub, so a shorter wire means a shorter stub.',
+          '- The bus is terminated off-board so the interface can be observed: it leaves ' +
+            'through the connectors to a second board, where an FPGA terminates and ' +
+            'captures it.',
+          '- Developing the controlled-impedance stackup and microvia/blind-via architecture ' +
+            'for the high-speed routing.',
+          "- Simulating the full channel in the MATLAB Signal Integrity Toolbox, from the " +
+            "custom dies' IBIS models through the via transitions and connector " +
+            'S-parameters, along with the board clock tree, to close timing and impedance ' +
+            'budgets before fabrication.',
+        ],
+      },
+    ],
+  },
+
+  {
+    slug: 'accelerator-test-pcb',
+    title: 'Hardware Accelerator Test PCB',
+    subtitle: 'Test platform for a custom accelerator',
+    org: 'Stanford Accelerate Lab',
+    period: 'May – Jun 2026',
+    summary:
+      "A test board in KiCad for a PhD student's custom hardware accelerator, with JTAG and " +
+      "peripheral interfaces and clock routing optimized for operation up to 600 MHz.",
+    links: [{ label: 'GitHub', href: 'https://github.com/fwdesai/KIRIN-Test-Board' }],
+
+    cover: '/images/projects/accelerator-test-pcb/board.webp',
+
+    images: [
+      {
+        src: '/images/projects/accelerator-test-pcb/board.webp',
+        alt: 'KIRIN test board layout, top side',
+      },
+      {
+        src: '/images/projects/accelerator-test-pcb/back.webp',
+        alt: 'KIRIN test board layout, back side, showing the BGA decoupling capacitors and via field',
+      },
+    ],
+    sections: [
+      {
+        heading: 'Overview',
+        body: [
+          'KIRIN Test Board v1.0, a bring-up board for a custom accelerator ASIC from the ' +
+            'Stanford Accelerate Lab, designed with B.W. Cheng. The board powers the chip, ' +
+            'clocks it, and breaks out every interface it exposes for debug.',
+        ],
+      },
+      {
+        heading: 'Hardware',
+        body: [
+          '- Separate 0.8 V core and 1.8 V I/O rails, each with its own input connector, ' +
+            'local decoupling, and test points.',
+          '- Decoupling capacitors on the back side, directly under the package.',
+          '- A coaxial clock input routed straight to the chip, with a tap point for probing ' +
+            'the clock, for operation up to 600 MHz.',
+          '- JTAG on both a standard 20-pin header and a 6-pin header.',
+          "- The chip's serial link (2-bit input and output lanes with valid/ready " +
+            'handshaking, plus its clock) broken out to headers.',
+          '- A reset button with its own test point.',
+        ],
+      },
+    ],
+  },
+
+  {
     slug: 'mri-quadrature-digitizer',
     title: 'Wireless Quadrature Digitizer for MRI Radar',
     subtitle: 'Dual-channel high-res digitizer for radar-based vital signs monitoring',
     org: 'Stanford Magnetic Resonance Systems Research Lab',
-    period: null,
+    period: 'Jun 2025 – Jan 2026',
     summary:
       'A custom dual-channel quadrature digitizer with high-resolution ADCs and an analog ' +
       'front-end for continuous-wave radar vital-sign monitoring inside an MRI bore — about ' +
@@ -93,94 +204,10 @@ export const projects = [
   },
 
   {
-    slug: 'robotics-chip-on-board',
-    title: 'Robotics Chip-on-Board Module',
-    subtitle: 'High-speed HDI board for robotics',
-    org: 'Stanford Tambe Lab',
-    period: 'In Progress',
-    summary:
-      "IN PROGRESS. A 16-layer HDI board integrating custom silicon (designed by a PhD student) for robot inference. HyperBus interface runs at DDR speeds up to 800 MHz.",
-    links: [
-      // { label: 'GitHub', href: 'https://github.com/fwdesai/...' },
-    ],
-    // Watermarked copy — the clean original is board_v0.webp in the same
-    // folder, ready to swap in when the board is no longer a draft.
-    cover: '/images/projects/robotics-chip-on-board/board_v0-draft.webp',
-    images: [],
-    sections: [
-      {
-        heading: 'Overview',
-        body: [
-          'Designing a ~16-layer chip-on-board module in Altium for on-robot inference, ' +
-            'taking it from board-level schematic through layout. It integrates roughly 50 ' +
-            'ICs, including wire-bonded bare die.',
-        ],
-      },
-      {
-        heading: 'Hardware',
-        body: [
-          '- Custom silicon designed by a PhD student in the lab: one central hub chip and 16 ' +
-            'spoke chips.',
-          '- Each spoke chip is paired with its own Infineon flash and RAM.',
-          '- The hub connects to the spokes over a HyperBus interface running at DDR speeds up ' +
-            'to 800 MHz.',
-          '- A 240-pin connector carries board power along with the interfaces that leave the ' +
-            'board, including UART.',
-        ],
-      },
-      {
-        heading: 'Design Work',
-        body: [
-          '- Developing the controlled-impedance stackup, the microvia / blind-via ' +
-            'architecture, and the DDR-speed routing constraints, using pre-layout ' +
-            'signal-integrity simulation in the MATLAB Signal Integrity Toolbox to close ' +
-            'impedance and timing budgets before fabrication.',
-          '- Created Altium library footprints and bond-pad land patterns for the custom die, ' +
-            'drawing die-attach and wire-bond geometry directly in layout.',
-        ],
-      },
-    ],
-  },
-
-  {
-    slug: 'accelerator-test-pcb',
-    title: 'Hardware Accelerator Test PCB',
-    subtitle: 'Test platform for a custom accelerator',
-    org: 'Stanford Accelerate Lab',
-    period: null,
-    summary:
-      "A test board in KiCad for a PhD student's custom hardware accelerator, with JTAG and " +
-      "peripheral interfaces and clock routing optimized for operation up to 600 MHz.",
-    links: [{ label: 'GitHub', href: 'https://github.com/fwdesai/KIRIN-Test-Board' }],
-
-    cover: '/images/projects/accelerator-test-pcb/board.webp',
-
-    images: [
-      {
-        src: '/images/projects/accelerator-test-pcb/board.webp',
-        alt: 'KIRIN test board layout, top side',
-      },
-      {
-        src: '/images/projects/accelerator-test-pcb/back.webp',
-        alt: 'KIRIN test board layout, back side, showing the BGA decoupling capacitors and via field',
-      },
-    ],
-    sections: [
-      {
-        heading: 'Overview',
-        body: [
-            "A test board in KiCad for a PhD student's custom hardware accelerator, with JTAG and " +
-            "peripheral interfaces and clock routing optimized for operation up to 600 MHz.",
-        ],
-      },
-    ],
-  },
-
-  {
     slug: 'esp32-pcb',
     title: 'ESP32 PCB with Integrated Trace Antenna',
     subtitle: '',
-    org: '',
+    org: 'Personal project',
     period: '',
     summary: "Inspired by Phil's Lab YouTube channel. ESP32-based PCB with a meandered printed inverted-F antenna.",
     links: [
